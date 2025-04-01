@@ -19,7 +19,7 @@ spec:
         - containerPort: 9898
         env:
         - name: PODINFO_UI_MESSAGE
-          value: "Hello from Flux!"
+          value: "Updated via GitOps!!"
 ---
 apiVersion: v1
 kind: Service
