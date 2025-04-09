@@ -15,7 +15,7 @@ spec:
       containers:
       - env:
         - name: PODINFO_UI_MESSAGE
-          value: Updated via GitOps!!
+          value: Hello from GitOps Manager!
         image: ghcr.io/stefanprodan/podinfo:6.5.0
         name: hello-world
         ports:
