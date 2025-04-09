@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: hello-world
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: hello-world
@@ -13,22 +13,22 @@ spec:
         app: hello-world
     spec:
       containers:
-      - name: hello-world
+      - env:
+        - name: PODINFO_UI_MESSAGE
+          value: Updated via GitOps!!
         image: ghcr.io/stefanprodan/podinfo:6.5.0
+        name: hello-world
         ports:
         - containerPort: 9898
-        env:
-        - name: PODINFO_UI_MESSAGE
-          value: "Updated via GitOps!!"
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: hello-world
 spec:
-  type: ClusterIP
   ports:
   - port: 80
     targetPort: 9898
   selector:
     app: hello-world
+  type: ClusterIP
